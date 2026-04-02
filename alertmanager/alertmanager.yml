@@ -1,0 +1,21 @@
+global:
+  resolve_timeout: 2m
+
+route:
+  receiver: 'email-notifications'
+
+receivers:
+- name: 'email-notifications'
+  email_configs:
+    - to: 'your-email@example.com'
+      from: 'prometheus@example.com'
+      smarthost: 'smtp.example.com:587'
+      auth_username: 'your-username'
+      auth_password: 'your-password'
+      send_resolved: true
+
+- name: 'slack-notifications'
+  slack_configs:
+    - api_url: "https://hooks.slack.com/services/YOUR-SLACK-API-URL"
+      channel: '#general'
+      send_resolved: true
